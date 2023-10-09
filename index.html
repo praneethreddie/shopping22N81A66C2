@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title>
+            Shopping Cart
+        </title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+        <div id="signin -section" class="hidden">
+            <h1>Sign In</h1>
+            <from onsubmit="return signin ">
+                <input type="text" id="username" placeholder="Username" required><br>
+                <input type="text" id="password" placeholder="password" required><br>
+                <button type="submit">sign in</button>
+            </from>
+            <p>Don't have an account? <a href="#" onclick="showsignup()">SIGN UP</a></p>
+        </div>
+
+        <div id="signup-section" class="hidden">
+            <h1>sign up</h1>
+    
+            <form onsubmit="return signup()">
+                <input type="text" id="regUsername" placeholder="Username" required><br>
+                <input type="password" id="regPassword" placeholder="Password" required><br>
+                <input type="date" id="regDate" placeholder="Date" required><br>
+                <input type="email" id="regEmail" placeholder="email" required><br>
+                <button type="submit">signup</button>
+            </form>
+    
+            <p>Already have an account? <a href="#" onclick="showsignin()">SIGN IN</a></p>
+        </div>
+        <div id="main-section" class="hidden">
+            <h1>Shopping Cart</h1>
+    
+        <div class="products">
+            <div class="product">
+                <h2>iphone 15</h2>
+                <p>Price: $2000</p>
+                <img src="C:\Users\prane\OneDrive\Desktop\praneeth\fORwQR-smartphone-apple-iphone-x-transparent-background.png">
+                <button class="add-to-cart" onclick="addToCart('Product 1', 2000)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h2>samsung</h2>
+                <p>Price: $1500</p>
+                <img src="C:\Users\prane\OneDrive\Desktop\praneeth\GalaxyS23.png">
+                <button class="add-to-cart" onclick="addToCart('Product 1', 1500)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h2>moto flip</h2>
+                <p>Price: $1000</p>
+                <img src="C:\Users\prane\OneDrive\Desktop\praneeth\razr.png">
+                <button class="add-to-cart" onclick="addToCart('Product 1', 1000)">Add to Cart</button>
+            </div>
+    
+            <div class="product">
+                <h2>iphone SE</h2>
+                <p>Price: $2500</p>
+                <img src="C:\Users\prane\OneDrive\Desktop\praneeth\iphone se.png">
+                <button class="add-to-cart" onclick="addToCart('Product 2', 2500)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h2>samsung flip</h2>
+                <p>Price: $1500</p>
+                <img src="C:\Users\prane\OneDrive\Desktop\praneeth\galaxy-z-flip-by-samsung.png">
+                <button class="add-to-cart" onclick="addToCart('Product 1', 1500)">Add to Cart</button>
+            </div>
+            </div>
+    
+            <div class="cart">
+                <h2>Shopping Cart</h2>
+                <ul id="cart-items"></ul>
+                <p>Total: $<span id="total">0</span></p>
+                <button onclick="checksout()">Checkout</button>
+            </div>
+        </div>
+    
+    <script>let cartItems = [];
+    
+        function addToCart(product, price) {
+            cartItems.push({product, price});
+            updateCart();
+        }
+        
+        function updateCart() {
+            let cartList = document.getElementById("cart-items");
+            let totalElement = document.getElementById("total");
+            let total = 0;
+        
+            cartList.innerHTML = "";
+            cartItems.forEach(item => {
+                let listItem = document.createElement("li");
+                listItem.innerText = `${item.product} - $${item.price}`;
+                cartList.appendChild(listItem);
+                total += item.price;
+            });
+        
+            totalElement.innerText = total;
+        }
+        
+        function checksout() {
+            alert('Thank you for your purchase!');
+        }
+        </script> 
+    
+    </body>
+</html>
